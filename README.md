@@ -26,7 +26,9 @@ O objetivo é oferecer uma base sólida de backend com boas práticas, incluindo
 ### 1️⃣ Clonar o repositório
 ### 2️⃣ Instalar dependências: npm install
 ### 3️⃣ Iniciar o servidor em modo desenvolvimento
-### 4️⃣Rodar as migrações do banco: npx prisma studio
+   - npm run dev
+### 4️⃣Rodar as migrações do banco
+   - npx prisma studio
 
 ✅ Boas Práticas Implementadas
 
