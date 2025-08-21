@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+enum Category {
+  ação
+  fundo
+  titulo
+  imovel
+}
+
+model Investimentos {
+  id String @id @default(uuid())
+  category Category
+  name String
+  amount Float
+  
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("investimentos")
+}
