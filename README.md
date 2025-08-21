@@ -1,44 +1,83 @@
-# 📊 Sistema de Cadastro de Investimentos
+## 📄 Sobre o Projeto
 
-Este projeto é uma **API backend** desenvolvida em **Node.js** com **TypeScript**, utilizando o **Prisma ORM** para gerenciamento do banco de dados.  
-O sistema permite o **cadastro de investimentos**, contendo as seguintes informações:  
+Esta é a API RESTful desenvolvida para gerenciar o cadastro de investimentos financeiros. O projeto foi construído com foco em boas práticas de desenvolvimento, código limpo, escalabilidade e robustez, utilizando um stack moderno baseado em Node.js e TypeScript.
 
-- **Nome** do investimento  
-- **Valor** aplicado  
-- **Categoria**  
-
-O objetivo é oferecer uma base sólida de backend com boas práticas, incluindo validações, middlewares para tratamento de erros e rotas bem estruturadas.
+A aplicação serve como o **Backend** da solução, sendo responsável por toda a lógica de negócio, validação de dados e comunicação com o banco de dados.
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## 🏛️ Arquitetura e Decisões Técnicas
 
-- **Node.js + TypeScript** → base do projeto  
-- **Express** → criação das rotas e servidor HTTP  
-- **Prisma ORM** → mapeamento do banco de dados  
-- **Zod** → validação de dados de entrada  
-- **Middlewares personalizados** → tratamento centralizado de erros  
-- **CORS** → permitir acesso de diferentes origens  
-- **tsx** → execução do projeto em ambiente de desenvolvimento  
+
+* **Express.js:** Utilizado como o framework principal para a construção do servidor, gerenciamento de rotas e middlewares.
+
+* **Prisma ORM:** Escolhido para ser a camada de acesso ao banco de dados.
+
+* **TypeScript:** A aplicação foi escrita inteiramente em TypeScript para adicionar tipagem estática, o que aumenta a previsibilidade do código, melhora a experiência de desenvolvimento com autocompletar e previne uma classe inteira de bugs em tempo de execução.
+
+* **Validação com Zod:** Todas as entradas de dados (request body) são validadas através de esquemas do Zod. Isso cria uma barreira de proteção na borda da aplicação, garantindo que nenhum dado malformado chegue às camadas de negócio.
+
+* **Middleware de Tratamento de Erros:** Utilizando `express-async-errors`, o tratamento de erros assíncronos é centralizado. Isso evita a repetição de blocos `try...catch` nos controllers, resultando em um código mais limpo e um sistema de tratamento de falhas mais confiável e padronizado.
+
+* **Qualidade de Código com Biome:** O projeto utiliza o Biome para formatação e linting do código. Isso garante um padrão de estilo consistente em toda a base de código e ajuda a identificar potenciais problemas de forma automatizada.
 
 ---
 
-### 1️⃣ Clonar o repositório
-### 2️⃣ Instalar dependências: npm install
-### 3️⃣ Iniciar o servidor em modo desenvolvimento
-   - npm run dev
-### 4️⃣Rodar as migrações do banco
-   - npx prisma studio
+## Endpoints da API
 
-✅ Boas Práticas Implementadas
+A API expõe os seguintes endpoints para a gestão de investimentos:
 
-Uso de TypeScript para maior segurança do código
+### Cadastrar um novo investimento
 
-Validação de dados com zod
+* **Endpoint:** `POST /investments`
+* **Descrição:** Cria um novo registro de investimento no banco de dados.
+* **Request Body:**
 
-Tratamento de erros centralizado com middlewares
+    ```json
+    {
+      "nome": "Ações da Empresa X",
+      "valor": 1500.75,
+      "categoria": "Renda Variável"
+    }
+    ```
 
-Organização do código em camadas (rotas, middlewares, prisma)
+* **Resposta de Sucesso (201 Created):**
 
-Scripts automatizados no package.json
+    ```json
+    {
+      "id": "clx123abc456def",
+      "nome": "Ações da Empresa X",
+      "valor": 1500.75,
+      "categoria": "Renda Variável",
+      "createdAt": "2025-08-21T02:20:00.000Z"
+    }
+    ```
 
+---
+
+## 🚀 Como Executar o Projeto
+
+### Pré-requisitos
+* Node.js (versão 18 ou superior)
+* NPM ou Yarn
+* Uma instância de um banco de dados compatível com o Prisma (ex: PostgreSQL, MySQL, SQLite)
+
+### Passos
+
+1.  **Clone o repositório:**
+    
+
+2.  **Acesse o diretório do projeto:**
+    
+
+3.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
+
+4.  **Inicie a aplicação em modo de desenvolvimento:**
+    Conforme definido no arquivo `package.json`, utilize o seguinte comando:
+    ```bash
+    npm prisma studio
+    npm run dev
+    ```
